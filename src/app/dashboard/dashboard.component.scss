@@ -1,0 +1,29 @@
+.dashboard{
+    &-internal{
+
+        display: grid;
+        
+        background-color: #f1f1f1;
+
+        @media screen and (max-width: 30em){
+            grid-template-areas: 'dashboard-holder';
+            
+            padding: 20px;
+        }
+
+        @media screen and (min-width: 48em){
+            grid-template-areas: 'dashboard-holder dashboard-holder dashboard-holder';
+            align-items: center;
+            height: calc(100vh - 200px);
+
+            margin: 0 50px;
+            padding: 50px;
+        }
+
+        &-holder{
+            grid-area: "dashboard-holder";
+
+            padding: 0 20px;
+        }
+    }
+}

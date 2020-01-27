@@ -1,0 +1,42 @@
+<div class="card">
+
+    <div class="card-info" >
+        <header>
+            <h3 class="card-subtitle">{{ place?.name + ', ' + place?.sys.country }}</h3>
+        </header>
+
+        <div class="card-body">
+            <h1 [ngClass]="getStatus(place?.main.temp)" class="card-title">{{ place?.main.temp | utilsConvertTemperature}} </h1>
+        </div>
+
+        <div class="card-info">
+            <div class="card-tags">
+                <div class="card-tag">
+                    <span class="card-label">Humidity</span>
+                    <h6 class="card-value bold">
+                        {{place?.main.humidity}}
+                    </h6>
+                </div>
+
+                <div class="card-tag">
+                    <span class="card-label">Pressure</span>
+                    <h6 class="card-value bold">
+                        {{place?.main.pressure}}
+                    </h6>
+                </div>
+               
+            </div>
+
+            <div class="card-datetime">
+                <h6 class="card-label-data">
+                   update at: {{ place?.date | date: 'HH:mm:ss'}}
+                </h6>
+            </div>
+        </div>
+
+    </div>
+    <div class="card-error"></div>
+    <div class="card-loading">
+
+    </div>
+</div>
