@@ -24,23 +24,30 @@ export class DashboardComponent implements OnInit {
     this.setRefreshTimer();
   }
 
-  getPlaces(): void {
+  getPlaces(): void{
 
     if (this.isRefreshing) {
       this.places.forEach((key) => {
+
+        let weather = new Weather();
+        weather.isLoading = true;
+
         this.utilsService.getPlace(key)
           .then(response => {
 
-            let weatherNow:Weather = response as Weather;
-            weatherNow.date = new Date();
-
-            this.isRefreshing = false;
-            this.cardplaces.push(response);
+            weather = response as Weather;
+            weather.date = new Date();
+            weather.isError = false;
+            weather.isLoading = false;
+            this.cardplaces.push(weather);
 
           })
           .catch(error => {
-            this.isRefreshing = false;
-            alert(error.message ? error.message : "Erro desconhecido");
+
+            weather.name = key;
+            weather.isError = true;
+            weather.isLoading = false;
+            this.cardplaces.push(weather);
           })
       })
     }
@@ -64,6 +71,6 @@ export class DashboardComponent implements OnInit {
     this.interval = setInterval(() => {
       this.resetPlaces();
       this.getPlaces();
-    }, 600000)
+    }, 60000)
   }
 }

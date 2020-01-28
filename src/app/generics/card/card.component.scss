@@ -1,0 +1,123 @@
+.card{
+
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
+
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #cacaca;
+
+    @media screen and (max-width: 48em) {
+        margin: 15px 0px;
+    };
+
+    @media screen and (min-width: 48em) {
+        margin: 0px 10px;
+    };
+
+    &-info{
+        >header{
+            padding: 10px 0px;
+
+            border-bottom: 1px solid #f1f1f1;
+            text-align: center;
+        }
+    }
+
+    &-title{
+        font-size: 3.2em;
+    }
+
+    &-subtitle{
+        color: #0a0a0a;
+        font-size: 0.8em;
+        font-weight: 300;
+    }
+    
+    &-body{
+        text-align: center;
+
+        >h1{
+            padding: 15px 0;
+            text-align: center;
+        }
+    }
+
+    &-footer{
+        
+    }
+
+    &-tags{
+        display: none;
+        grid-template-areas: "card-tag card-tag";
+
+        opacity: 0;
+        visibility: hidden;
+
+        background-color: #f1f1f1;
+    }
+
+    &-tag{
+        grid-area: 'card-tag';
+
+        text-align: center;
+    }
+
+    &-label{
+        color: #b4b4b4;
+        font-size: 0.6em;
+        font-weight: 300;
+        text-transform: uppercase;
+
+        &-data{
+            padding: 8px 0;
+            color: #b4b4b4;
+            font-size: 0.6em;
+            font-weight: 300;
+            text-align: center;
+        }
+    }
+
+    &-value{
+        color: #b4b4b4;
+        font-size: 0.8em;
+    }
+
+    &-datetime{
+        background-color: #f1f1f1;
+    }
+
+    &:hover{
+        .card-tags{
+            display: grid;
+            grid-template-areas: "card-tag card-tag";
+    
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    &-loading{
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    &-input{
+        margin: 15px 0;
+        border: none;
+        border-bottom: 2px solid #ed1946;
+        font-size: 1.2em;
+    }
+
+    &-button{
+
+        margin: 15px 0;
+        padding: 10px;
+
+        background-color: transparent;
+        border: 1px solid #737c84;
+        border-radius: 15px;
+        color: #737c84;
+    }
+}

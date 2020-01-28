@@ -10,7 +10,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   { path: 'dashboard', component: DashboardComponent },
-  { path: '**', component: DashboardComponent }
+  { path: '**', component: DashboardComponent, pathMatch: 'full' }
 ];
 
 @NgModule({

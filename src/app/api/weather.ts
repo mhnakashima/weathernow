@@ -1,5 +1,9 @@
 export class Weather{
 
+    constructor(){
+       
+    }
+
     public coord? = {
         "lon": "",
         "lat": ""
@@ -7,7 +11,7 @@ export class Weather{
 
     public weather? = [];
     public base?: string = "";
-    public main: {
+    public main?: {
         "temp": number,
         "pressure": number,
         "humidity": number,
@@ -24,7 +28,7 @@ export class Weather{
         "all": number
     };
 
-    public dt? : string;
+    public dt? : string = "";
     public sys: {
         "type": number,
         "id": number,
@@ -33,8 +37,10 @@ export class Weather{
         "sunrise": number, 
     }
 
-    public id: number;
-    public name: string;
-    public cod: number;
+    public id: number = 0;
+    public name: string = "";
+    public cod: number = 0;
     public date: Date;
+    public isError: boolean = false;
+    public isLoading: boolean = false;
 }

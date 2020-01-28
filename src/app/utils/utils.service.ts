@@ -17,8 +17,6 @@ export class UtilsService {
   getPlace(place: string = 'Betim'): Promise<any> {
 
     const urlsearch = `${endpoint}` + "q=" + `${place}` + "&appid=8be7ee4797cba4ef94749261a61f3ef0";
-    console.log(urlsearch);
-
     return this.http.get(urlsearch).toPromise();
   }
 

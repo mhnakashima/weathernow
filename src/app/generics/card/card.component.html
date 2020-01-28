@@ -1,27 +1,26 @@
 <div class="card">
-
-    <div class="card-info" >
+    <div *ngIf="!place?.isError" class="card-info" >
         <header>
             <h3 class="card-subtitle">{{ place?.name + ', ' + place?.sys.country }}</h3>
         </header>
 
-        <div class="card-body">
-            <h1 [ngClass]="getStatus(place?.main.temp)" class="card-title">{{ place?.main.temp | utilsConvertTemperature}} </h1>
+        <div *ngIf="place" class="card-body">
+            <h1 [ngClass]="getStatus(place?.main.temp)" class="card-title">{{ place?.main.temp | utilsConvertTemperature}} &#xb0;</h1>
         </div>
 
-        <div class="card-info">
+        <div class="card-footer">
             <div class="card-tags">
                 <div class="card-tag">
                     <span class="card-label">Humidity</span>
                     <h6 class="card-value bold">
-                        {{place?.main.humidity}}
+                        {{place?.main.humidity}}%
                     </h6>
                 </div>
 
                 <div class="card-tag">
                     <span class="card-label">Pressure</span>
-                    <h6 class="card-value bold">
-                        {{place?.main.pressure}}
+                    <h6 class="card-value">
+                        {{place?.main.pressure}}hPa
                     </h6>
                 </div>
                
@@ -35,8 +34,24 @@
         </div>
 
     </div>
-    <div class="card-error"></div>
-    <div class="card-loading">
+    <div *ngIf="place?.isError" class="card-error card-info">
+        <header>
+            <h3 class="card-subtitle">{{ (place.name) ? (place?.name) : 'Erro de busca de lugar'}} </h3>
+        </header>
+        
+        <div class="card-body">
+            <input class="card-input" [(ngModel)]="place.name" type="text" placeholder="" />
+            
+            <div>
+                <button class="card-button" (click)="getPlace()">
+                    Try Again
+                </button>
+            </div>
+        </div>
 
+       
+    </div>
+    <div *ngIf="place?.isLoading" class="card-loading">
+        <img src="./assets/images/loader.svg" alt="" />
     </div>
 </div>
